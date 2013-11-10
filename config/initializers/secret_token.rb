@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-DTCInsuranceBroker::Application.config.secret_key_base = 'c42471380c9d802a80f196ac83cef43ae435487572b20158e5807ee7dc1c0945634425e7df2f34599220d0061711b9da20e9242c3bf57f2f28a68678149820fe'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+DTCInsuranceBroker::Application.config.secret_key_base = secure_token
