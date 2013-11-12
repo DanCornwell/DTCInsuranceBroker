@@ -33,4 +33,19 @@ describe "Pages" do
 
   end
 
+  describe "Error Page" do
+    before {visit error_path}
+
+    it {should have_content('An error occurred!')}
+    it {should have_title(full_title('Error'))}
+
+  end
+
+  describe "Quote Page" do
+    before {visit quote_path}
+
+    it {should have_title(full_title('Your Quote'))}
+
+  end
+
 end
