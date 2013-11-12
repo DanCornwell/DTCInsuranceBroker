@@ -16,4 +16,14 @@ class PagesController < ApplicationController
 
   end
 
+  def error
+
+  end
+
+  def quote
+
+    @quote = params[:quote]
+
+  end
+
 end

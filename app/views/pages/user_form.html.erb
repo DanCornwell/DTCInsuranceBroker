@@ -1,3 +1,164 @@
 <% provide(:title, 'User Form') %>
-
+<%= javascript_include_tag "application" %>
 <h3>Please fill in the forms below:</h3>
+
+
+<div class="row">
+  <div class="span6 offset3">
+
+    <form novalidate id="clientForm" action="http://posttestserver.com/post.php?dir=dtc" method="post">
+
+        <div id="errorCol" class="page" >
+          <h5>There were errors with your data. Please address the issues noted below:</h5>
+          <ul id="errorList"></ul>
+        </div>
+
+        <div id="person" class="page" style="display:block;">
+          <fieldset>
+            <legend>
+              Personal Details
+            </legend>
+            <label for="title"> Title: </label>
+            <select id="title" name="title" class="data">
+              <option value="Mr">Mr</option>
+              <option value="Mrs">Mrs</option>
+              <option value="Miss">Miss</option>
+              <option value="Master">Master</option>
+              <option value="Dr">Dr</option>
+              <option value="Prof">Prof</option>
+            </select>
+            <br>
+            <label for="forename"> Forename: </label><input type="text" id="forename" name="forename" class="data name" size="15" maxlength="20" /> <br>
+            <label for="surname"> Surname: </label><input type="text" id="surname" name="surname" class="data name" size="15" maxlength="20" /> <br>
+            <label for="email"> Email: </label><input type="email" id="email" name="email" class="data" size="15" maxlength="20" /> <br>
+            <label for="dob"> Date of Birth: </label><input type="date" id="dob" name="dob" class="data" > <br>
+            <label for="phone"> Telephone Number: </label><input type="tel" id="phone" name="phone" class="data" size="15" maxlength="11" /> <br>
+            <p> Address: </p>
+            <label for="street"> Street: </label><input type="text" id="street" name="street" class="data" size="15" maxlength="20" /> <br>
+            <label for="city"> City: </label><input type="text" id="city" name="city" class="data" size="15" maxlength="20" /> <br>
+            <label for="county"> County: </label><input type="text" id="country" name="country" class="data" size="15" maxlength="20" /> <br>
+            <label for="postcode"> Postcode: </label><input type="text" id="postcode" name="postcode" class="data" size="15" maxlength="7" /> <br>
+            <label> License Type: </label>
+            <input type="radio" name="license" class="data" value="Full" checked="checked" /> Full
+            <input type="radio" name="license" class="data" value="Provisional" /> Provisional <br>
+
+            <label> License Period (Years): </label><input type="number" name="period" class="data" min="0" step="1" value="0" /> <br>
+            <label for="job"> Job held: </label>
+            <select id="job" name="job" class="data">
+              <option value="Teacher/Lecture">Teacher/Lecture</option>
+              <option value="Doctor/Nurse">Doctor/Nurse</option>
+              <option value="Emergency Services">Emergency Services</option>
+              <option value="Information Technology">Information Technology</option>
+              <option value="Retail Salesperson">Retail Salesperson</option>
+              <option value="Self-Employed">Self-Employed</option>
+              <option value="Unemployed">Unemployed</option>
+              <option value="Student">Student</option>
+              <option value="Other">Other</option>
+            </select>
+            <br>
+          </fieldset>
+          <input type="button" value="Continue" onClick="validate('vehicle')" /> <br><br>
+          <input type="button" value="Cancel Application" onClick="window.location.href='index.html'"/>
+        </div>
+
+        <div id="vehicle" class="page">
+          <fieldset>
+            <legend>
+              Vehicle Details
+
+            </legend>
+            <label for="reg"> Vehicle Registration: </label> <input type="text" id="reg" name="reg" class="data" size="15" maxlength="20" /> <br>
+            <label for="mileage"> Estimated Vehicle Mileage: </label> <input type="number" id="mileage" name="mileage" class="data" min="0" step="1000" value="10000" /><br>
+            <label for="estValue"> Estimated Vehicle Value £:</label> <input type="number" id="estValue" name="estValue" class="data" min="1" step="1000" value="5000" /><br>
+            <label for="parking"> Typical Parking Location: </label>
+            <select id="parking" name="parking" class="data">
+              <option value="In a garage">In a garage</option>
+              <option value="On a driveway">On a driveway</option>
+              <option value="On a street">On a street</option>
+            </select>
+            <br>
+            <label for="startDate"> Policy Start Date: </label><input type="date" id="startDate" name="startDate" class="data"> <br>
+          </fieldset>
+          <input type="button" value="Go Back" onClick="showForm('person')"/>
+          <input type="button" value="Continue" onClick="validate('history')"/>
+          <br><br>
+          <input type="button" value="Cancel Application" onClick="window.location.href='index.html'"/>
+        </div>
+
+        <div id="history" class="page">
+          <fieldset>
+            <legend>
+              Driver History
+            </legend>
+            <label for="number_incidents"> Number Of Incidents: </label><input type="number" id="number_incidents" name="number_incidents" class="data" min="0" step="1" value="0" /> <br>
+          </fieldset>
+          <input type="button" value="Go Back" onClick="showForm('vehicle')"/>
+          <input type="button" value="Continue" onClick="validate('history_incidents')"/>
+          <br><br>
+          <input type="button" value="Cancel Application" onClick="window.location.href='index.html'"/>
+        </div>
+
+        <div id="history_incidents" class="page">
+          <fieldset>
+            <legend>
+              Driver History
+            </legend>
+            <div id="incidents"> </div>
+          </fieldset>
+          <input type="button" value="Go Back" onClick="showForm('history')"/>
+          <input type="button" value="Continue" onClick="validate('policy')"/>
+          <br><br>
+          <input type="button" value="Cancel Application" onClick="window.location.href='index.html'"/>
+        </div>
+
+        <div id="policy" class="page">
+          <fieldset>
+            <legend>
+              Desired Policy Features
+            </legend>
+            <label for="excess"> Policy Excess (%): </label><input type="number" id="excess" name="excess" class="data" min="10" max="50" step="5" value="10" /><br>
+            <label for="cover"> Breakdown Cover Type: </label>
+            <select id="cover" name="cover" class="data">
+              <option value="At home">At home</option>
+              <option value="On the roadside">On the roadside</option>
+              <option value="European cover">European cover</option>
+              <option value="No breakdown cover">No breakdown cover</option>
+            </select>
+            <br>
+            <label for="windscreen"> Request Windscreen Repair Cover:</label><input type="checkbox" id="windscreen" name="windscreen" class="data"><br>
+          </fieldset>
+          <br>
+          <input type="button" value="Go Back" onClick="showForm('history_incidents')"/>
+          <input type="button" value="Continue" onClick="validate('summary')"/>
+          <br><br>
+          <input type="button" value="Cancel Application" onClick="window.location.href='index.html'"/>
+        </div>
+
+        <div id="summary" class="page">
+          <fieldset>
+            <legend>
+              Summary
+            </legend>
+            <h5> Personal Details </h5>
+            <div id="person_data"></div>
+
+            <h5> Vehicle Details </h5>
+            <div id="vehicle_data"></div>
+
+            <h5> Driver History </h5>
+            <div id="num_incidents_data"></div>
+            <div id="incidents_data"></div>
+
+            <h5> Desired Policies </h5>
+            <div id="policy_data"></div>
+
+          </fieldset>
+          <input type="button" value="Go Back" onClick="showForm('policy')"/>
+          <br><br>
+          <input type="submit" value="Submit Details">
+        </div>
+  </form>
+
+  </div>
+</div>
+
