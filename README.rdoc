@@ -1,3 +1,5 @@
 == README
 
-Dan Cornwell Assignment
+Dan Cornwell Assignment 
+
+-- This is the ruby on rails app that handles the broker part of the assignment. Contains the form the user fills out as well as the other pages.
