@@ -75,11 +75,11 @@ function addIncidentForms(num) {
 		for(k=lower;k<upper;k++) {
 			// The date input
 			var date_label = document.createElement('label');
-			date_label.setAttribute('for','incidentDate'+k);
+			date_label.setAttribute('for','incident_date'+k);
 			var date_input = document.createElement("input");
 			date_input.setAttribute('type',"date");
-			date_input.setAttribute('id',"incidentDate"+k);
-            date_input.setAttribute('name',"incidentDate"+k);
+			date_input.setAttribute('id',"incident_date"+k);
+            date_input.setAttribute('name',"incident_date"+k);
             date_input.className = "data accident";
 			date_label.appendChild(document.createTextNode("Date of incident "+k+": "));
 			container.appendChild(date_label);
@@ -88,11 +88,11 @@ function addIncidentForms(num) {
 		
 			// The sum of claim input
 			var num_label = document.createElement('label');
-			num_label.setAttribute('for',"totalSum"+k);
+			num_label.setAttribute('for',"total_sum"+k);
 			var num_input = document.createElement("input");
 			num_input.setAttribute('type',"number");
-			num_input.setAttribute('id',"totalSum"+k);
-            num_input.setAttribute('name',"totalSum"+k);
+			num_input.setAttribute('id',"claim_sum"+k);
+            num_input.setAttribute('name',"claim_sum"+k);
             num_input.setAttribute('min','1');
 			num_input.setAttribute('step','200');
 			num_input.className = "data"; 
@@ -104,10 +104,10 @@ function addIncidentForms(num) {
 			
 			// The type of incident input
 			var type_label = document.createElement('label');
-			type_label.setAttribute('for',"typeIncident"+k);
+			type_label.setAttribute('for',"type_incident"+k);
 			var type_input = document.createElement('select');
-			type_input.setAttribute('id',"typeIncident"+k);
-            type_input.setAttribute('name',"typeIncident"+k);
+			type_input.setAttribute('id',"incident_type"+k);
+            type_input.setAttribute('name',"incident_type"+k);
             type_input.className = "data";
 			type_input.options[0] = new Option("Head-On Collision","Head-On Collision",true,false);
 			type_input.options[1] = new Option("Single Vehicle Collision","Single Vehicle Collision",false,false);
