@@ -18,11 +18,17 @@ class PagesController < ApplicationController
 
   def error
 
+    @error = params[:error]
+
   end
 
   def quote
 
     @quote = params[:quote]
+
+  end
+
+  def retrieve_form
 
   end
 

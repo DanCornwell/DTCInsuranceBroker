@@ -35,6 +35,7 @@ describe "Pages" do
     let(:page_title) {'User Form'}
     it_should_behave_like "all pages"
     it {should have_selector('form')}
+    it {should have_button("Cancel Application")}
   end
 
   describe "About Page" do
@@ -67,6 +68,16 @@ describe "Pages" do
 
     let(:page_title) {'Your Quote'}
     it_should_behave_like "all pages"
+
+  end
+
+  describe "Retrieve Quotation Page" do
+    before {visit retrieve_form_path}
+
+    let(:page_title) {'Retrieve Quotation'}
+    it_should_behave_like "all pages"
+    it {should have_selector('form')}
+
 
   end
 

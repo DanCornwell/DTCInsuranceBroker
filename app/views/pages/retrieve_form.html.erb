@@ -1,0 +1,32 @@
+<% provide(:title, 'Retrieve Quotation') %>
+<%= javascript_include_tag "application" %>
+
+<h3>Please enter your email and quotation code below.</h3>
+
+<div class="row">
+  <div class="span6 offset3">
+    <form novalidate id="retrieveForm" action="http://safe-garden-5990.herokuapp.com/quotations" method="post">
+
+        <div id="errorCol" class="page" >
+          <h5>There were errors with your data. Please address the issues noted below:</h5>
+          <ul id="errorList"></ul>
+        </div>
+
+      <label for="email"> Email: </label><input type="email" id="email" name="email" class="data" size="15" maxlength="20" /> <br>
+      <label for="code"> Code: </label><input type="text" id="code" name="code" class="data code" size="15" maxlength="8" /> <br>
+      <br>
+      <input type="button" value="Retrieve Quotation" onclick="checkForm('retrieveForm')">
+    </form>
+  </div>
+</div>
+
+<script>
+  // Check the form for errors, submitting if there are none
+  function checkForm(form) {
+      cleanErrors()
+      if(validateForm(form)) {
+         document.getElementById(form).submit()
+      }
+
+  }
+</script>

@@ -8,7 +8,7 @@ function validateForm(form) {
 	
 	// The data the user submits
 	var data = document.getElementById(form).getElementsByClassName('data');
-	// Get the labels which the datas sit in
+	// Get the labels which the data's sit in
 	var labels = document.getElementById(form).getElementsByTagName('label');
 	// The data the user submits
 	var data = document.getElementById(form).getElementsByClassName('data');
@@ -90,6 +90,11 @@ function validateForm(form) {
 				  errors.push(labelText+" A valid name is needed for your forename and surname. Please use only characters within the alphabet.");
 			  }
 		  }
+          else if(dataValues[i].className == 'data code') {
+              if(!codeValidate(dataValues[i].value)) {
+                  errors.push(labelText+" A valid code is needed. Please use only lower case letters and make sure there are 8 letters altogether.");
+              }
+           }
 		  else {
 			  if(!textValidate(dataValues[i].value)) {
 				  errors.push(labelText+" Field was blank or contained illegal characters.");	
@@ -187,6 +192,15 @@ function nameValidate(input) {
 	var legalChars = /[a-zA-Z]/;
 	return legalChars.test(input);
 
+}
+
+// Validates a code by checking it is all lowercase and has a length of 8
+function codeValidate(input) {
+    var legalChars = /[a-z]/
+    if(legalChars.test(input) && input.length == 8) {
+        return true;
+    }
+    else return false;
 }
 
 // Validates a text by checking it is not blank and contains valid characters
