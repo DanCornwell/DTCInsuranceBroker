@@ -47,6 +47,7 @@ function validate(form) {
 	
 }
 
+
 // Dynamically adds or removes a number of incident forms to match the amount of incidents the user specified
 function addIncidentForms(num) {
 	// The number of incidents the user has been involved in

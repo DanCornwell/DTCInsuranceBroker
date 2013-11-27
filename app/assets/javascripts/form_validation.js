@@ -114,6 +114,15 @@ function validateForm(form) {
 	}
 }
 
+// Check the retrieval form for errors, submitting if there are none
+function validateRetrieve(form) {
+    cleanErrors()
+    if(validateForm(form)) {
+        document.getElementById(form).submit()
+    }
+
+}
+
 // Displays all the errors generated from the inputs
 function displayErrors(errors) {
 	// Sets the error column to visible
@@ -133,7 +142,6 @@ function cleanErrors() {
 	document.getElementById('errorList').innerHTML = "";
 	document.getElementById('errorCol').style.display = "none";
 }
-
 
 // Validates a date of birth by checking whether the user's age is bigger than 16 (can only start driving at 17)
 function dobValidate(input) {
