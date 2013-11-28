@@ -1,10 +1,20 @@
 <% provide(:title, 'Your Quote') %>
 
-<h3>Your Quote</h3>
+<h3>Your Quotes</h3>
 
-£<%= @quote %>
+<% @quotes.each do |f| %>
+    <%=f[:underwriter]%>: £<%=f[:premium]%>
+    <br>
+<% end %>
 
-<p>An email sent has been sent to your address containing a code to access your quotation at a later date.</p>
+<br>
+<p>Each underwriter will send you an email with a code which can be used to retrieve their quotation for you.</p>
+
+<p>Below are the details you entered:</p>
+<% @details.each do |key,value| %>
+    <%=key%>: <%=value%>
+    <br>
+<% end %>
 
 <p>Thank you for requesting a quote. Press the home button to return to the home page where you can get another quote or
 retrieve your quote.</p>

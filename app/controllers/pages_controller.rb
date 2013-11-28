@@ -23,12 +23,61 @@ class PagesController < ApplicationController
   end
 
   def quote
+    @quotes = []
+    params.each do |f|
 
-    @quote = params[:quote]
+      temp = {underwriter: f[:underwriter], premium: f[:premium]}
+      @quotes.push(temp)
+
+    end
+
+    @details = details_hash(params)
 
   end
 
   def retrieve_form
+
+  end
+
+  private
+
+  def details_hash(details)
+
+    hash = {
+     title: details[:title],
+     forename: details[:forename],
+     surname: details[:surname],
+     email: details[:email],
+     dob: details[:dob],
+     telephone: details[:telephone],
+     street: details[:street],
+     city: details[:city],
+     county: details[:county],
+     postcode: details[:postcode],
+     license_type: details[:license_type],
+     license_period: details[:license_period],
+     occupation: details[:occupation],
+     registration: details[:registration],
+     mileage: details[:mileage],
+     estimated_value: details[:estimated_value],
+     parking: details[:parking],
+     start_date: details[:start_date],
+     number_incidents: details[:number_incidents],
+     excess: details[:excess],
+     breakdown_cover: details[:breakdown_cover],
+     windscreen_cover: details[:windscreen_cover]
+    }
+    if(details[:number_incidents].to_i>0)
+      (1..details[:number_incidents].to_i).each do |i|
+
+        hash[:"incident_date#{i}"] = details[("incident_date#{i}").to_sym]
+        hash[:"claim_sum#{i}"] = details[("claim_sum#{i}").to_sym]
+        hash[:"incident_type#{i}"] = details[("incident_type#{i}").to_sym]
+        hash[:"description#{i}"] = details[("description#{i}").to_sym]
+
+      end
+    end
+    return hash
 
   end
 
