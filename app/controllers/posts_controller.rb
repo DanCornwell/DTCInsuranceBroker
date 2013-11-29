@@ -20,7 +20,6 @@ class PostsController < ApplicationController
 
         uri = URI.parse(url)
         response = Net::HTTP.post_form(uri, params)
-
         if(response.code == 200)
          quotes.push(response.body)
         elsif(response.code == 400)
@@ -35,7 +34,7 @@ class PostsController < ApplicationController
       if(bad_data > 0)
         redirect_to '/error?error=The%20data%20entered%20in%20the%20form%20was%20invalid.%20Please%20rectify%20and%20try%20again.'
       else
-      redirect_to '/error?error=No%20underwriters%20could%20be%20contacted%20successfully.'
+        redirect_to '/error?error=No%20underwriters%20could%20be%20contacted%20successfully.'
       end
     else
       redirect_to controller: 'pages', action:'quote', data: quotes
