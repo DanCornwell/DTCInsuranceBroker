@@ -12,7 +12,7 @@ class PostsController < ApplicationController
 
     if(underwriters.length == 0)
 
-      redirect_to '/error', error: 'No underwriters were specified to be used. Contact the admin with this issue.'
+      redirect_to '/error?error=No underwriters were specified to be used. Contact the admin with this issue.'
 
     else
 
@@ -33,12 +33,12 @@ class PostsController < ApplicationController
 
     if (quotes.length == 0)
       if(bad_data > 0)
-        redirect_to '/error', error: 'The data entered in the form was invalid. Please rectify and try again.'
+        redirect_to '/error?error=The data entered in the form was invalid. Please rectify and try again.'
       else
-      redirect_to '/error', error: 'No underwriters could be contacted successfully.'
+      redirect_to '/error?error=No underwriters could be contacted successfully.'
       end
     else
-      redirect_to '/quote', data: quotes
+      redirect_to controller: 'pages', action:'quote', data: quotes
     end
 
   end
