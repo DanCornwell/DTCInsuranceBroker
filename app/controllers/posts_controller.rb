@@ -35,9 +35,11 @@ class PostsController < ApplicationController
     end
 
     if (quotes.length == 0)
-      redirect_to controller: 'pages', action:'error', error: errors
+      #redirect_to controller: 'pages', action:'error', error: errors
+      render template: "pages/error", error: errors
     else
-      redirect_to controller: 'pages', action:'quote', data: quotes
+      #redirect_to controller: 'pages', action:'quote', data: quotes
+      render template: "pages/index", data: quotes
     end
 
   end
