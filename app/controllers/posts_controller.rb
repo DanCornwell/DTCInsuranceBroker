@@ -36,10 +36,10 @@ class PostsController < ApplicationController
 
     if (quotes.length == 0)
       #redirect_to controller: 'pages', action:'error', error: errors
-      render template: "pages/error", error: errors
+      Net::HTTP.post_form("pages/error", errors)
     else
       #redirect_to controller: 'pages', action:'quote', data: quotes
-      render template: "pages/index", data: quotes
+      Net::HTTP.post_form("pages/quote", quotes)
     end
 
   end
