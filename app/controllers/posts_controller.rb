@@ -4,11 +4,11 @@ class PostsController < ApplicationController
   require "uri"
 
 
-  def post
+  def post_details
 
     underwriters = %w(http://safe-garden-5990.herokuapp.com/quotations)
     quotes = []
-    bad_data = 0
+    errors = []
 
     if(underwriters.length == 0)
 
@@ -20,10 +20,14 @@ class PostsController < ApplicationController
 
         uri = URI.parse(url)
         response = Net::HTTP.post_form(uri, params)
-        if(response.code == 200)
-         quotes.push(response.body)
-        elsif(response.code == 400)
-          bad_data += 1
+        if(response.code == '200')
+          parsed_quote = JSON.parse(response.body).symbolize_keys
+          quotes << parsed_quote
+        elsif(response.code == '400')
+          parsed_error = JSON.parse(response.body).symbolize_keys
+          errors << parsed_error
+        elsif(response.code == '404')
+          errors << {error: 'An underwriter could not be reached, please try again later.'}
         end
 
       end
@@ -31,11 +35,7 @@ class PostsController < ApplicationController
     end
 
     if (quotes.length == 0)
-      if(bad_data > 0)
-        redirect_to '/error?error=The%20data%20entered%20in%20the%20form%20was%20invalid.%20Please%20rectify%20and%20try%20again.'
-      else
-        redirect_to '/error?error=No%20underwriters%20could%20be%20contacted%20successfully.'
-      end
+      redirect_to controller: 'pages', action:'error', error: errors
     else
       redirect_to controller: 'pages', action:'quote', data: quotes
     end

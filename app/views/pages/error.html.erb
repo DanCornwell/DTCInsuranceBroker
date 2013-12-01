@@ -1,6 +1,9 @@
 <% provide(:title, 'Error') %>
 
 
-<h3>An error occurred!</h3>
+<h3>An error occurred! Please read the messages below.</h3>
 
-<%= @error %>
+<% @error.each do |f| %>
+    <%= f[:underwriter] %>: <%=f[:error]%>
+    <br>
+<% end %>
