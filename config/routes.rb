@@ -6,7 +6,7 @@ DTCInsuranceBroker::Application.routes.draw do
   match '/error', to: 'pages#error', via: 'post'
   match '/quote', to:'pages#quote', via: 'post'
   match '/retrieve_form', to:'pages#retrieve_form', via: 'get'
-  match '/post', to:'posts#post_details', via: 'post'
+  match '/post', to:'posts#post_details', via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
