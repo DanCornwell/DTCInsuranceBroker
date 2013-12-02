@@ -5,6 +5,7 @@ DTCInsuranceBroker::Application.routes.draw do
   match '/help', to: 'pages#help', via: 'get'
   match '/error', to: 'pages#error', via: 'get'
   match '/quote', to:'pages#quote', via: 'get'
+  match '/retrieved_quote', to:'pages#retrieved_quote', via: 'get'
   match '/retrieve_form', to:'pages#retrieve_form', via: 'get'
   match '/post', to:'posts#post_details', via: 'post'
   match '/retrieve', to:'posts#post_retrieve', via: 'post'

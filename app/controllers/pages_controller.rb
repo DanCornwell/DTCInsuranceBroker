@@ -38,6 +38,10 @@ class PagesController < ApplicationController
 
   def retrieve_form
 
+  end
+
+  def retrieved_quote
+
     @quotes = []
     quote_array = params[:quote_messages]
     quote_array.each do |f|
@@ -49,9 +53,6 @@ class PagesController < ApplicationController
 
     @details = details_hash(quote_array[0])
 
-  end
-
-  def retrieved_quote
 
   end
 
