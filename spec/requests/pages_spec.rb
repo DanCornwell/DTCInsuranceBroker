@@ -66,7 +66,7 @@ describe "Pages" do
   describe "Quote Page" do
     before {visit quote_path}
 
-    let(:page_title) {'Your Quote'}
+    let(:page_title) {'Your Quotes'}
     it_should_behave_like "all pages"
 
   end

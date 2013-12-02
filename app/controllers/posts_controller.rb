@@ -47,6 +47,9 @@ class PostsController < ApplicationController
     url = ""
     url = "http://safe-garden-5990.herokuapp.com/quotations/retrieve" if params[:code][0..2] == 'dtc'
 
+    quotes = []
+    errors = []
+
     if(url == "")
 
       redirect_to 'error?error=No%20quotations%20could%20be%20found%20with%20that%20code.'

@@ -1,0 +1,12 @@
+<% @quotes.each do |f| %>
+    <%=f[:underwriter]%>: £<%=f[:premium]%>
+    <br>
+<% end %>
+
+<br>
+<p>Below are the details you entered:</p>
+<% @details.each do |key,value| %>
+    <%=key%>: <%=value%>
+    <br>
+<% end %>
+<br>
