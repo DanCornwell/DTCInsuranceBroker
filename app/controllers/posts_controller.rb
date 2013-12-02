@@ -56,7 +56,7 @@ class PostsController < ApplicationController
     else
 
       uri = URI.parse(url)
-      data = {code: params[:code][2..-1], email: params[:email]}
+      data = {code: params[:code][3..-1], email: params[:email]}
       response = Net::HTTP.post_form(uri, data)
       if(response.code == '200')
         parsed_quote = JSON.parse(response.body).symbolize_keys
