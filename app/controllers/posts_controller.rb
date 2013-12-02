@@ -74,7 +74,7 @@ class PostsController < ApplicationController
     if (quotes.length == 0)
       redirect_to controller: 'pages', action:'error', error_messages: errors
     else
-      redirect_to controller: 'pages', action:'quote', quote_messages: quotes
+      redirect_to controller: 'pages', action:'retrieved_quote', quote_messages: quotes
     end
 
   end

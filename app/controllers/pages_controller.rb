@@ -38,6 +38,21 @@ class PagesController < ApplicationController
 
   def retrieve_form
 
+    @quotes = []
+    quote_array = params[:quote_messages]
+    quote_array.each do |f|
+
+      temp = {underwriter: f[:underwriter], premium: f[:premium]}
+      @quotes.push(temp)
+
+    end
+
+    @details = details_hash(quote_array[0])
+
+  end
+
+  def retrieved_quote
+
   end
 
   private
