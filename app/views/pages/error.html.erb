@@ -3,7 +3,7 @@
 
 <h3>An error occurred! Please read the messages below.</h3>
 
-<% @error.each do |f| %>
+<% @errors.each do |f| %>
     <%= f[:underwriter] %>: <%=f[:error]%>
     <br>
 <% end %>

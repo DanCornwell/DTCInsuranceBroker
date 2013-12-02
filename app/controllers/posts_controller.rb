@@ -3,7 +3,6 @@ class PostsController < ApplicationController
   require "net/http"
   require "uri"
 
-
   def post_details
 
     underwriters = %w(http://safe-garden-5990.herokuapp.com/quotations)
