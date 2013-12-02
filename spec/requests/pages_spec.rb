@@ -55,11 +55,10 @@ describe "Pages" do
   end
 
   describe "Error Page" do
-    before {visit error_path}
+   # before {visit error_path}
 
-    let(:page_title) {'Error'}
-    it {should have_content('An error occurred!')}
-    it_should_behave_like "all pages"
+   # let(:page_title) {'Error'}
+   # it {should have_content('An error occurred!')}
 
   end
 
@@ -67,7 +66,6 @@ describe "Pages" do
     before {visit quote_path}
 
     let(:page_title) {'Your Quotes'}
-    it_should_behave_like "all pages"
 
   end
 

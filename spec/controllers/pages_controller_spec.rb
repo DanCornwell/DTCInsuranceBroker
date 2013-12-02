@@ -6,7 +6,7 @@ describe PagesController do
 
     it "posts error messages" do
       post "error", {error_messages: ['error1','error2','error3']}
-      assigns(:error).should eq ['error1','error2','error3']
+      assigns(:errors).should eq ['error1','error2','error3']
     end
 
   end
