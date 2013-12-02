@@ -38,7 +38,7 @@ describe PostsController do
       hash[:underwriter] = 'DTC Insurance Underwriter'
       hash[:premium] = 660
       quotes = [hash]
-      response.should redirect_to(controller: 'pages', action:'quote', data: quotes)
+      response.should redirect_to(controller: 'pages', action:'quote', quote_messages: quotes)
 
     end
 
@@ -47,7 +47,7 @@ describe PostsController do
       hash[:email] = "error"
       post :post_details, hash
       errors = [{underwriter: 'DTC Insurance Underwriter', error: "The form data was incorrect. Please try again."}]
-      response.should redirect_to(controller: 'pages', action:'error', error: errors)
+      response.should redirect_to(controller: 'pages', action:'error', error_messages: errors)
 
     end
 

@@ -18,13 +18,13 @@ class PagesController < ApplicationController
 
   def error
 
-    @error = params[:error_messages]
+    @errors = params[:error_messages]
 
   end
 
   def quote
     @quotes = []
-    quote_array = params[:data][:quote_messages]
+    quote_array = params[:quote_messages]
     quote_array.each do |f|
 
       temp = {underwriter: f[:underwriter], premium: f[:premium]}

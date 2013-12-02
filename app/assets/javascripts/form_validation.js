@@ -92,7 +92,7 @@ function validateForm(form) {
 		  }
           else if(dataValues[i].className == 'data code') {
               if(!codeValidate(dataValues[i].value)) {
-                  errors.push(labelText+" A valid code is needed. Please use only lower case letters and make sure there are 8 letters altogether.");
+                  errors.push(labelText+" A valid code is needed. Please use only lower case letters.");
               }
            }
 		  else {
@@ -205,7 +205,7 @@ function nameValidate(input) {
 // Validates a code by checking it is all lowercase and has a length of 8
 function codeValidate(input) {
     var legalChars = /[a-z]/
-    if(legalChars.test(input) && input.length == 8) {
+    if(legalChars.test(input)) {
         return true;
     }
     else return false;

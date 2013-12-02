@@ -35,9 +35,9 @@ class PostsController < ApplicationController
     end
 
     if (quotes.length == 0)
-      redirect_to controller: 'pages', action:'error', error: errors
+      redirect_to controller: 'pages', action:'error', error_messages: errors
     else
-      redirect_to controller: 'pages', action:'quote', data: quotes
+      redirect_to controller: 'pages', action:'quote', quote_messages: quotes
     end
 
   end
@@ -70,9 +70,9 @@ class PostsController < ApplicationController
 
 
     if (quotes.length == 0)
-      redirect_to controller: 'pages', action:'error', error: errors
+      redirect_to controller: 'pages', action:'error', error_messages: errors
     else
-      redirect_to controller: 'pages', action:'quote', data: quotes
+      redirect_to controller: 'pages', action:'quote', quote_messages: quotes
     end
 
   end
