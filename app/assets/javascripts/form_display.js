@@ -115,9 +115,9 @@ function addIncidentForms(num) {
 			type_input.setAttribute('id',"incident_type"+k);
             type_input.setAttribute('name',"incident_type"+k);
             type_input.className = "data";
-			type_input.options[0] = new Option("Head-On Collision","Head-On Collision",true,false);
-			type_input.options[1] = new Option("Single Vehicle Collision","Single Vehicle Collision",false,false);
-			type_input.options[2] = new Option("Intersection Collision","Intersection Collision",false,false);
+			type_input.options[0] = new Option("Head on collision","Head on collision",true,false);
+			type_input.options[1] = new Option("Single vehicle collision","Single vehicle collision",false,false);
+			type_input.options[2] = new Option("Intersection collision","Intersection collision",false,false);
 			type_label.appendChild(document.createTextNode("Type of incident "+k+": "));
 			container.appendChild(type_label);
 			container.appendChild(type_input);
