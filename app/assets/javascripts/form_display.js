@@ -1,17 +1,22 @@
-// JavaScript Document
+// JavaScript Document - contains methods for displaying the form to the user
 
 // The current form we are looking at
 var currentForm = 'person';
 // The current number of incidents the user indicates they have had
 var prev_incidents = parseInt("0",10);
 
-// Code to travel between forms; hides the current form and shows the next form
+/**
+ * Method that displays the different forms by hiding and revealing each form
+ * @param form - the form to be displayed
+ */
 function showForm(form) {
 
    document.getElementById(currentForm).style.display = 'none';
    // If statement to handle users without accidents travelling between forms
    if(document.getElementById(form) === document.getElementById("history_incidents")) {
+       // If there are 0 incidents dont show the incidents form
 		if(parseInt(document.getElementById("number_incidents").value,10) == 0) {
+            // If we are at incident history form, go to policy form else go to history form
 			if(document.getElementById(currentForm) === document.getElementById("history")) {
 				form = "policy";	
 			}
@@ -23,9 +28,6 @@ function showForm(form) {
    document.getElementById(form).style.display = 'block';
    // Change currentform variable to the new form
    currentForm = form;
-
-   // These needed here due to back button
-
    // Scroll to top of page
    scrollTo(0,0);
    // Clean errors box
@@ -33,7 +35,10 @@ function showForm(form) {
 
  }
 
-// Validates the current form, if it passes append the summary and move to next form
+/**
+ * Validates the current form, if it passes append the summary and move to next form
+ * @param form - the form to be validated
+ */
 function validate(form) {
 
     // Scroll to top of page
@@ -138,6 +143,11 @@ function addIncidentForms(num) {
 	prev_incidents = incidents;
 }
 
+/**
+ * Appends the data of a form to the summary field
+ *
+ * @param form - form to be appended
+ */
 function appendSummary(form) {
 
 	// Determine the correct container, returns if we are in the summary

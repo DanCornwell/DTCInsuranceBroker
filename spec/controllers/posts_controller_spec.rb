@@ -33,7 +33,7 @@ describe PostsController do
         description1: "crash"
     }
 
-    it "should make a post request" do
+    it "should make a post request and redirect to quotes page" do
       post :post_details, hash
       hash[:underwriter] = 'DTC Insurance Underwriter'
       hash[:premium] = 660

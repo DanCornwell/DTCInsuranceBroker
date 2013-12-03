@@ -1,4 +1,4 @@
-// JavaScript Document
+// JavaScript Document - contains methods to validate a form
 
 // Validates the user inputs and returns whether they have passed or failed.
 // If failed display the errors to the user in order for them to be corrected

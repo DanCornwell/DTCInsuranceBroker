@@ -55,10 +55,9 @@ describe "Pages" do
   end
 
   describe "Error Page" do
-   # before {visit error_path}
+    before {visit error_path}
 
-   # let(:page_title) {'Error'}
-   # it {should have_content('An error occurred!')}
+    let(:page_title) {'Error'}
 
   end
 

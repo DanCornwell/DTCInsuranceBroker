@@ -3,10 +3,13 @@ ruby '1.9.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
-
+# Use bootstrap-sass for the design on my webpages
 gem 'bootstrap-sass', '2.3.2.0'
 
 # Use sqlite3 as the database for Active Record
+# Use Rspec as the main testing
+# Use guard for easier testing
+# Use spork for quicker testing
 group :development, :test do
 	gem 'sqlite3', '1.3.8'
 	gem 'rspec-rails', '2.13.1'
@@ -16,6 +19,7 @@ group :development, :test do
 	gem 'childprocess', '0.3.6'
 end
 
+# Use capybara for clear testing
 group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'
@@ -51,6 +55,7 @@ group :doc do
   gem 'sdoc', '0.3.20', require: false
 end
 
+# Use pg for heroku postgres database
 group :production do
   gem 'pg', '0.15.1'
   gem 'rails_12factor', '0.0.2'

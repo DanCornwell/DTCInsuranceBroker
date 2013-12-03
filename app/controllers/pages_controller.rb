@@ -16,12 +16,14 @@ class PagesController < ApplicationController
 
   end
 
+  # Sets the error variable for the error page
   def error
 
     @errors = params[:error_messages]
 
   end
 
+  # Sets the quotes and details variable for the quote page
   def quote
     @quotes = []
     quote_array = params[:quote_messages]
@@ -31,7 +33,7 @@ class PagesController < ApplicationController
       @quotes.push(temp)
 
     end
-
+    # Take the first quote from the array as we only need one details hash
     @details = details_hash(quote_array[0])
 
   end
@@ -40,6 +42,7 @@ class PagesController < ApplicationController
 
   end
 
+  # Sets the quotes and details variable for the retrieved quote page
   def retrieved_quote
 
     @quotes = []
@@ -50,7 +53,7 @@ class PagesController < ApplicationController
       @quotes.push(temp)
 
     end
-
+    # Take the first quote from the array as we only need one details hash
     @details = details_hash(quote_array[0])
 
 
@@ -58,6 +61,8 @@ class PagesController < ApplicationController
 
   private
 
+  # Returns a hash of the details the user inputted to get this quote
+  # Needed as an underwriter can return more things
   def details_hash(details)
 
     hash = {

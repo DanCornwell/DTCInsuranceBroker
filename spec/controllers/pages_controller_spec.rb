@@ -4,7 +4,7 @@ describe PagesController do
 
   describe "request to error page" do
 
-    it "posts error messages" do
+    it "should assign the error messages to the errors variable" do
       post "error", {error_messages: ['error1','error2','error3']}
       assigns(:errors).should eq ['error1','error2','error3']
     end
@@ -13,7 +13,7 @@ describe PagesController do
 
   describe "request to quote page" do
 
-    it "posts quote messages" do
+    it "should assign variables for the quote page" do
       post "quote", quote_messages: [ {
           underwriter: 'test underwriter',
           premium: 500,
