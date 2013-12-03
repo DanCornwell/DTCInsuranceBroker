@@ -94,7 +94,7 @@ function addIncidentForms(num) {
 		
 			// The sum of claim input
 			var num_label = document.createElement('label');
-			num_label.setAttribute('for',"total_sum"+k);
+			num_label.setAttribute('for',"claim_sum"+k);
 			var num_input = document.createElement("input");
 			num_input.setAttribute('type',"number");
 			num_input.setAttribute('id',"claim_sum"+k);
@@ -125,11 +125,11 @@ function addIncidentForms(num) {
 		
 			// The description of incident input
 			var description_label = document.createElement('label');
-			description_label.setAttribute('for',"textfield"+k);
+			description_label.setAttribute('for',"description"+k);
 			var description_input = document.createElement('input');
-			description_input.setAttribute('type',"textfield"+k);
-			description_input.setAttribute('id',"description");
-            description_input.setAttribute('name',"description");
+			description_input.setAttribute('type',"textfield");
+			description_input.setAttribute('id',"description"+k);
+            description_input.setAttribute('name',"description"+k);
             description_input.className = "data";
 			description_label.appendChild(document.createTextNode("Description of incident "+k+": "));
 			container.appendChild(description_label);
