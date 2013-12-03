@@ -127,7 +127,7 @@ function addIncidentForms(num) {
 			var description_label = document.createElement('label');
 			description_label.setAttribute('for',"description"+k);
 			var description_input = document.createElement('input');
-			description_input.setAttribute('type',"textfield");
+			description_input.setAttribute('type',"text");
 			description_input.setAttribute('id',"description"+k);
             description_input.setAttribute('name',"description"+k);
             description_input.className = "data";
