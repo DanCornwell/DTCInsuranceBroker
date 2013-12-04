@@ -25,16 +25,9 @@ class PagesController < ApplicationController
 
   # Sets the quotes and details variable for the quote page
   def quote
-    @quotes = []
-    quote_array = params[:quote_messages]
-    quote_array.each do |f|
-
-      temp = {underwriter: f[:underwriter], premium: f[:premium]}
-      @quotes.push(temp)
-
-    end
-    # Take the first quote from the array as we only need one details hash
-    @details = details_hash(quote_array[0])
+    @quotes = get_quotes
+    # Take the first quote from the params as we only need one details hash
+    @details = details_hash(params[:quote_messages][0])
 
   end
 
@@ -45,16 +38,10 @@ class PagesController < ApplicationController
   # Sets the quotes and details variable for the retrieved quote page
   def retrieved_quote
 
-    @quotes = []
-    quote_array = params[:quote_messages]
-    quote_array.each do |f|
+    @quotes = get_quotes
 
-      temp = {underwriter: f[:underwriter], premium: f[:premium]}
-      @quotes.push(temp)
-
-    end
-    # Take the first quote from the array as we only need one details hash
-    @details = details_hash(quote_array[0])
+    # Take the first quote from the params  as we only need one details hash
+    @details = details_hash(params[:quote_messages][0])
 
 
   end
@@ -101,6 +88,21 @@ class PagesController < ApplicationController
     end
     return hash
 
+  end
+
+  # Returns the quotes received in the form of an array
+  def get_quotes
+
+    quotes = []
+
+    quote_array = params[:quote_messages]
+    quote_array.each do |f|
+
+      temp = {underwriter: f[:underwriter], premium: f[:premium]}
+      quotes.push(temp)
+
+    end
+    return quotes
   end
 
 end
