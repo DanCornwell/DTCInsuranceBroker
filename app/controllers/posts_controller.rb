@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   def post_details
 
     # Holds all the urls for the underwriters
-    underwriters = %w(http://safe-garden-5990.herokuapp.com/quotations)
+    underwriters = %w(http://dtcinsuranceunderwriter.herokuapp.com/quotations)
     # Array to hold all the quotes we receive
     quotes = []
     # Array to hold any errors we receive
@@ -58,7 +58,7 @@ class PostsController < ApplicationController
 
     # Sets the url based on the 3 character identifier on the beginning of the code
     url = ""
-    url = "http://safe-garden-5990.herokuapp.com/quotations/retrieve" if params[:code][0..2] == 'dtc'
+    url = "http://dtcinsuranceunderwriter.herokuapp.com/quotations/retrieve" if params[:code][0..2] == 'dtc'
 
     # Array to hold all the quotes we receive
     quotes = []
