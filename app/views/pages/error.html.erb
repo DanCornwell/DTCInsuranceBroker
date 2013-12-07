@@ -4,6 +4,6 @@
 <h3>An error occurred! Please read the messages below.</h3>
 
 <% @errors.each do |f| %>
-    <%= f[:underwriter] %>: <%=f[:error]%>
+    <%= f[:underwriter]+':' %> <%=f[:error]%>
     <br>
 <% end %>
