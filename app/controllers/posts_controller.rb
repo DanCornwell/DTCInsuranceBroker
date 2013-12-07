@@ -65,12 +65,8 @@ class PostsController < ApplicationController
     # Array to hold any errors we receive
     errors = []
 
-    # If url is blank that redirect to an error
-    if(url == "")
-
-      redirect_to 'error?error=No%20quotations%20could%20be%20found%20with%20that%20code.'
-
-    else
+    # If url is not blank
+    if(url != "")
       # Retrieve the quote from the url using the code and email supplied
       uri = URI.parse(url)
       # Trim the identifier off the code
@@ -92,9 +88,13 @@ class PostsController < ApplicationController
 
     end
 
-    # If quotes array empty redirect to errors, else redirect to retrieved quote
-    if (quotes.length == 0)
+    # If no identifier is entered redirect to error
+    if(url == "")
+      redirect_to controller: 'pages', action:'error', error_messages: "No quotations could be found with that code and email combination. Please check your details and try again."
+    # If quotes array empty redirect to errors
+    elsif (quotes.length == 0)
       redirect_to controller: 'pages', action:'error', error_messages: errors
+    # Else redirect to retrieved quote
     else
       redirect_to controller: 'pages', action:'retrieved_quote', quote_messages: quotes
     end
