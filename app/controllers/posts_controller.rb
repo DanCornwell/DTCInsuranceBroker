@@ -90,7 +90,7 @@ class PostsController < ApplicationController
 
     # If no identifier is entered redirect to error
     if(url == "")
-      redirect_to controller: 'pages', action:'error', error_messages: ["No quotations could be found with that code and email combination. Please check your details and try again."]
+      redirect_to controller: 'pages', action:'error', error_messages: [{error: "No quotations could be found with that code and email combination. Please check your details and try again."}]
     # If quotes array empty redirect to errors
     elsif (quotes.length == 0)
       redirect_to controller: 'pages', action:'error', error_messages: errors
